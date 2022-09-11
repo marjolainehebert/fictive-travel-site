@@ -5,16 +5,31 @@
     &__b-margin-until-medium{
         margin-bottom:1rem;
     }
+    &--t-padding {
+        padding-top:80px
+    }
 
     @mixin atMedium {
+        flex-direction:row;
+
         &__b-margin-until-medium{
             margin-bottom:0;
         }
 
-        flex-direction:row;
+        &--equal-height-medium{
+            align-items: stretch;
+        }
+        &--equal-height-large{
+            flex-direction:column;
+        }
+        
 
         &--gutters {
             gap:65px;
+        }
+
+        &--gutters-small{
+            gap:40px;
         }
 
         &--gutters-large {
@@ -23,6 +38,10 @@
 
         &__medium-4 {
             width: 33.33%;
+        }
+
+        &__medium-4 > div {
+            height:100%;
         }
 
         &__medium-4-larger {
@@ -38,6 +57,46 @@
         }
     
         &__medium-8-smaller {
+            width: 63%;
+        }
+    }
+
+    @mixin atLarge {
+        flex-direction:row;
+
+        &__b-margin-until-large{
+            margin-bottom:0;
+        }
+
+        &--equal-height-large{
+            align-items: stretch;
+        }
+
+        &--equal-height-large{
+            align-items: stretch;
+        }
+
+        &__large-4 {
+            width: 33.33%;
+        }
+
+        &__large-4 > div {
+            height:100%;
+        }
+
+        &__large-4-larger {
+            width: 37%;
+        }
+
+        &__large-6 {
+            width: 50%;
+        }
+    
+        &__large-8 {
+            width: 66.66%;
+        }
+    
+        &__large-8-smaller {
             width: 63%;
         }
     }
