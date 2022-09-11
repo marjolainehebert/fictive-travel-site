@@ -1,104 +1,98 @@
 .row {
-    display:flex;
-    flex-direction: column;
-
-    &__b-margin-until-medium{
-        margin-bottom:1rem;
-    }
+    
     &--t-padding {
         padding-top:80px
     }
 
+    &__b-margin-until-medium{
+        margin-bottom:1rem;
+    }
+
     @mixin atMedium {
-        flex-direction:row;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+
+        &--gutters {
+            column-gap:5.3%;
+        }
+    
+        &--gutters-large {
+            column-gap:8%
+        }
+    
+        &--gutters-small{
+            column-gap:3.6%;
+        }
 
         &__b-margin-until-medium{
             margin-bottom:0;
         }
 
-        &--equal-height-medium{
-            align-items: stretch;
-        }
-        &--equal-height-large{
-            flex-direction:column;
-        }
-        
-
-        &--gutters {
-            gap:65px;
-        }
-
-        &--gutters-small{
-            gap:40px;
-        }
-
-        &--gutters-large {
-            gap:100px;
+        &__large-1,
+        &__large-2,
+        &__large-3,
+        &__large-4,
+        &__large-5,
+        &__large-6,
+        &__large-7,
+        &__large-8,
+        &__large-9,
+        &__large-10,
+        &__large-11,
+        &__large-12 {
+            grid-column: span 12;
         }
 
         &__medium-4 {
-            width: 33.33%;
-        }
-
-        &__medium-4 > div {
-            height:100%;
-        }
-
-        &__medium-4-larger {
-            width: 37%;
+            grid-column: span 4;
         }
 
         &__medium-6 {
-            width: 50%;
+            grid-column: span 6;
         }
-    
+
         &__medium-8 {
-            width: 66.66%;
-        }
-    
-        &__medium-8-smaller {
-            width: 63%;
+            grid-column: span 8;
         }
     }
 
     @mixin atLarge {
-        flex-direction:row;
 
         &__b-margin-until-large{
             margin-bottom:0;
         }
 
-        &--equal-height-large{
-            align-items: stretch;
-        }
-
-        &--equal-height-large{
-            align-items: stretch;
-        }
-
         &__large-4 {
-            width: 33.33%;
-        }
-
-        &__large-4 > div {
-            height:100%;
-        }
-
-        &__large-4-larger {
-            width: 37%;
+            grid-column: span 4;
         }
 
         &__large-6 {
-            width: 50%;
+            grid-column: span 6;
         }
     
         &__large-8 {
-            width: 66.66%;
-        }
-    
-        &__large-8-smaller {
-            width: 63%;
+            grid-column: span 8;
         }
     }
-    
+    /* Begin Equal Height Rules */
+    &--equal-height-at-medium {
+        @mixin atMedium {
+            display: flex;
+        }
+
+        & > div {
+            float: none;
+            display: flex;
+        }
+
+    }
+
+    &--equal-height-at-large {
+        @mixin atLarge {
+            & > div {
+                display: flex;
+            }
+        }
+    }
+
 }
