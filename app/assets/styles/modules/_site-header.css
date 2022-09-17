@@ -11,7 +11,7 @@
 
     &__btn-container{
         @mixin atMedium{
-            float:right;
+            order:2;
         }
     }
 
@@ -30,7 +30,7 @@
         }
     }
 
-    @mixin atLarge{
+    @mixin atMedium{
         background-color: rgba($mainBlue, 0.3);
     }
 
@@ -111,6 +111,8 @@
             z-index:1;
             padding-top:0;
             transform: scale(1);
+            display:flex;
+            justify-content: flex-end;
         }
 
         &--is-visible{
