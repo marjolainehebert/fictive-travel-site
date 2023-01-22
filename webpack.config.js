@@ -1,4 +1,5 @@
-const path = require('path');
+const currentTask = process.env.npm_lifecycle_event
+const path = require('path')
 const { RuntimeGlobals } = require('webpack');
 const postCSSPlugins = [
     require('postcss-import'),
@@ -9,22 +10,8 @@ const postCSSPlugins = [
     require('autoprefixer')
 ]
 
-module.exports = {
+let config = {
     entry: './app/assets/scripts/App.js',
-    output: {
-        filename: 'bundled.js',
-        path: path.resolve(__dirname, 'app')
-    }, 
-    devServer: {
-        before: function (app, server) {
-            server._watch('./app/**/*.html')
-        },
-        contentBase: path.join(__dirname, 'app'),
-        hot: true,
-        port: 3000,
-        host: '0.0.0.0'
-    },
-    mode: 'development',
     module: {
         rules: [
             {
@@ -41,3 +28,34 @@ module.exports = {
         ]
     }
 }
+
+if (currentTask == 'dev') {
+    config.output = {
+        filename: 'bundled.js',
+        path: path.resolve(__dirname, 'app')
+    }
+    config.devServer = {
+        before: function (app, server) {
+            server._watch('./app/**/*.html')
+        },
+        contentBase: path.join(__dirname, 'app'),
+        hot: true,
+        port: 3000,
+        host: '0.0.0.0'
+    }
+    config.mode = 'development'
+}
+
+if (currentTask == 'build') {
+    config.output = {
+        filename: 'bundled.js',
+        path: path.resolve(__dirname, 'dist')
+    }
+    config.mode = 'production'
+    config.optimization = {
+        splitChunks: {chunks: 'all'}
+    }
+}
+
+
+module.exports = config
