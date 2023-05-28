@@ -21,7 +21,7 @@ class ClientArea {
             "password": this.field.value
         }).then(response => {
             this.form.remove();
-            this.contentArea.innerHTML="response.data";
+            this.contentArea.innerHTML=response.data;
         }).catch(() => {
             this.contentArea.innerHTML= `
                 <p class="client-area__error">That secret phrase is not correct. Try again!</p>
