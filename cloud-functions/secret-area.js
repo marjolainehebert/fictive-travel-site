@@ -3,13 +3,7 @@ exports.handler = function(event, context, callback) {
   <h3>Welcome To The Secret Area</h3>
   <p>Here we can tell you that the sky is <strong>blue</strong>, and two plus two equals four.</p>
   `
-  callback(null, {
-    statusCode: 200,
-    body: secretContent
-  })
-   /* 
-    
-    let body
+  let body
   
     if (event.body) {
       body = JSON.parse(event.body)
@@ -26,5 +20,5 @@ exports.handler = function(event, context, callback) {
       callback(null, {
         statusCode: 401
       })
-    }*/
+    }
   }
